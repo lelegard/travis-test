@@ -28,7 +28,8 @@ matrix:
       arch: amd64
       compiler: gcc
       env:
-        - TESTOPT=dev
+        - ARCH=x86_64
+        - EXE=
 
     - name: "Linux with clang"
       os: linux
@@ -36,26 +37,28 @@ matrix:
       arch: amd64
       compiler: clang
       env:
-        - TESTOPT=dev
+        - ARCH=x86_64
+        - EXE=
 
     - name: "macOS"
       os: osx
       osx_image: xcode11.3
       compiler: clang
       env:
-        - TESTOPT=dev
+        - ARCH=x86_64
+        - EXE=
 
     - name: "Windows 32"
       os: windows
       env:
-        - TESTOPT=dev32
         - ARCH=Win32
+        - EXE=.exe
 
     - name: "Windows 64"
       os: windows
       env:
-        - TESTOPT=dev
-        - ARCH=Win64
+        - ARCH=x64
+        - EXE=.exe
 
 script:
   # Comments in script
@@ -68,18 +71,12 @@ script:
   - echo "CXX=$CXX"
   - echo "ARCH=$ARCH"
   - echo "PATH=$PATH"
-  - echo "TESTOPT=$TESTOPT"
-  - git log --max-count=2 --format=fuller
   - |-
     if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then
-        powershell -NoLogo -ExecutionPolicy RemoteSigned ./Build.ps1
-        ls -lA Release-x64
+        powershell -NoLogo -ExecutionPolicy RemoteSigned ./Build.ps1 -Arch $ARCH
+    else
+        make
     fi
-  - |-
-    if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then
-        Release-x64\app.exe
-    fi
-  - |-
-    if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then
-        Release-x64\app_dll.exe
-    fi
+  - ls -lA Release-$ARCH
+  - Release-$ARCH/app$EXE
+  - Release-$ARCH/app_dll$EXE
