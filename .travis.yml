@@ -80,8 +80,8 @@ script:
   - ls -lA Release-$ARCH
   - |-
     if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then
-        Release-$ARCH/app.exe
+        Release-$ARCH/app_dll.exe
     else
-        Release-$ARCH/app
+        Release-$ARCH/app_dll
     fi
-  - Release-$ARCH/app_dll$EXE
+  - Release-$ARCH/app$EXE
