@@ -1,99 +1,368 @@
-# Comments
-language: cpp
+os: windows
+language: shell
 
-git:
-  depth: 1
-  quiet: true
-
-branches:
-  only:
-    - master
-
-addons:
-  apt:
-    packages:
-      - dos2unix
-  homebrew:
-    packages:
-      - gnu-sed
-      - grep
-      - dos2unix
-
-matrix:
-  include:
-
-    - name: "Linux with GCC"
-      os: linux
-      dist: bionic
-      arch: amd64
-      compiler: gcc
-      env:
-        - ARCH=x86_64
-        - EXE=
-
-    - name: "Linux with clang"
-      os: linux
-      dist: bionic
-      arch: amd64
-      compiler: clang
-      env:
-        - ARCH=x86_64
-        - EXE=
-
-    - name: "macOS"
-      os: osx
-      osx_image: xcode11.3
-      compiler: clang
-      env:
-        - ARCH=x86_64
-        - EXE=
-
-    - name: "Windows 32"
-      os: windows
-      install:
-        - powershell -c 'Install-WindowsFeature Server-Media-Foundation'
-      env:
-        - ARCH=Win32
-        - EXE=.exe
-
-    - name: "Windows 64"
-      os: windows
-      install:
-        - powershell -c 'Install-WindowsFeature Server-Media-Foundation'
-      env:
-        - ARCH=x64
-        - EXE=.exe
+# install:
+#   - powershell -c 'Install-WindowsFeature Server-Media-Foundation'
 
 script:
-  # Comments in script
-  - pwd
-  - echo "TRAVIS_OS_NAME=$TRAVIS_OS_NAME"
-  - echo "CC=$CC"
-  - echo "GCC=$GCC"
-
-  # Blank line and comments in script
-  - echo "CXX=$CXX"
-  - echo "ARCH=$ARCH"
-  - echo "PATH=$PATH"
-  - |-
-    if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then
-        powershell -NoLogo -ExecutionPolicy RemoteSigned ./Build.ps1 -Arch $ARCH
-    else
-        make
-    fi
-  - ls -lA Release-$ARCH
-  - |-
-    if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then
-        Release-$ARCH/app_dll.exe
-    else
-        Release-$ARCH/app_dll
-    fi
-  - Release-$ARCH/app$EXE
-  - |-
-    if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then
-        tsduck/tsversion.exe --version=all
-    fi
-  - |-
-    if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then
-        powershell  "& tsduck/tsversion.exe --version=all"
-    fi
+  - ls -l /C/WINDOWS/system32/ACLUI.dll 
+  - ls -l /C/WINDOWS/system32/activeds.dll 
+  - ls -l /C/WINDOWS/system32/ACTIVEDS.dll 
+  - ls -l /C/WINDOWS/system32/adsldpc.dll 
+  - ls -l /C/WINDOWS/system32/advapi32.dll 
+  - ls -l /C/WINDOWS/system32/ADVPACK.dll 
+  - ls -l /C/WINDOWS/system32/aeinv.dll 
+  - ls -l /C/WINDOWS/system32/aepic.dll 
+  - ls -l /C/WINDOWS/system32/AEPIC.dll 
+  - ls -l /C/WINDOWS/system32/apisethost.appexecutionalias.dll 
+  - ls -l /C/WINDOWS/system32/apphelp.dll 
+  - ls -l /C/WINDOWS/system32/AppXAllUserStore.dll 
+  - ls -l /C/WINDOWS/system32/AppxApplicabilityEngine.dll 
+  - ls -l /C/WINDOWS/system32/appxdeploymentclient.dll 
+  - ls -l /C/WINDOWS/system32/AppXDeploymentClient.dll 
+  - ls -l /C/WINDOWS/system32/authentication.dll 
+  - ls -l /C/WINDOWS/system32/authz.dll 
+  - ls -l /C/WINDOWS/system32/AUTHZ.dll 
+  - ls -l /C/WINDOWS/system32/AVRT.dll 
+  - ls -l /C/WINDOWS/system32/bcd.dll 
+  - ls -l /C/WINDOWS/system32/Bcp47Langs.dll 
+  - ls -l /C/WINDOWS/system32/bcp47mrm.dll 
+  - ls -l /C/WINDOWS/system32/bcrypt.dll 
+  - ls -l /C/WINDOWS/system32/bcryptPrimitives.dll 
+  - ls -l /C/WINDOWS/system32/BINDFLT.dll 
+  - ls -l /C/WINDOWS/system32/BiWinrt.dll 
+  - ls -l /C/WINDOWS/system32/browcli.dll 
+  - ls -l /C/WINDOWS/system32/Cabinet.dll 
+  - ls -l /C/WINDOWS/system32/capauthz.dll 
+  - ls -l /C/WINDOWS/system32/certca.dll 
+  - ls -l /C/WINDOWS/system32/certenroll.dll 
+  - ls -l /C/WINDOWS/system32/cfgmgr32.dll 
+  - ls -l /C/WINDOWS/system32/chakra.dll 
+  - ls -l /C/WINDOWS/system32/CHARTV.dll 
+  - ls -l /C/WINDOWS/system32/clbcatq.dll 
+  - ls -l /C/WINDOWS/system32/CLDAPI.dll 
+  - ls -l /C/WINDOWS/system32/CLIPC.dll 
+  - ls -l /C/WINDOWS/system32/ColorAdapterClient.dll 
+  - ls -l /C/WINDOWS/system32/combase.dll 
+  - ls -l /C/WINDOWS/system32/COMCTL32.dll 
+  - ls -l /C/WINDOWS/system32/COMDLG32.dll 
+  - ls -l /C/WINDOWS/system32/coml2.dll 
+  - ls -l /C/WINDOWS/system32/CompPkgSup.DLL 
+  - ls -l /C/WINDOWS/system32/CONCRT140.dll 
+  - ls -l /C/WINDOWS/system32/ContactActivation.dll 
+  - ls -l /C/WINDOWS/system32/container.dll 
+  - ls -l /C/WINDOWS/system32/CoreMessaging.dll 
+  - ls -l /C/WINDOWS/system32/CoreUIComponents.dll 
+  - ls -l /C/WINDOWS/system32/credui.dll 
+  - ls -l /C/WINDOWS/system32/CRYPT32.dll 
+  - ls -l /C/WINDOWS/system32/CRYPTBASE.dll 
+  - ls -l /C/WINDOWS/system32/CRYPTNET.dll 
+  - ls -l /C/WINDOWS/system32/cryptngc.dll 
+  - ls -l /C/WINDOWS/system32/cryptsp.dll 
+  - ls -l /C/WINDOWS/system32/crypttpmeksvc.dll 
+  - ls -l /C/WINDOWS/system32/cryptui.dll 
+  - ls -l /C/WINDOWS/system32/CRYPTUI.dll 
+  - ls -l /C/WINDOWS/system32/CRYPTXML.dll 
+  - ls -l /C/WINDOWS/system32/cscapi.dll 
+  - ls -l /C/WINDOWS/system32/CSCAPI.dll 
+  - ls -l /C/WINDOWS/system32/d2d1.dll 
+  - ls -l /C/WINDOWS/system32/d3d11.dll 
+  - ls -l /C/WINDOWS/system32/d3d11on12.dll 
+  - ls -l /C/WINDOWS/system32/d3d12.dll 
+  - ls -l /C/WINDOWS/system32/D3DSCache.dll 
+  - ls -l /C/WINDOWS/system32/davhlpr.dll 
+  - ls -l /C/WINDOWS/system32/DAVHLPR.dll 
+  - ls -l /C/WINDOWS/system32/daxexec.dll 
+  - ls -l /C/WINDOWS/system32/dbgcore.dll 
+  - ls -l /C/WINDOWS/system32/dbgeng.dll 
+  - ls -l /C/WINDOWS/system32/dbghelp.dll 
+  - ls -l /C/WINDOWS/system32/dbgmodel.dll 
+  - ls -l /C/WINDOWS/system32/DCIMAN32.dll 
+  - ls -l /C/WINDOWS/system32/dcomp.dll 
+  - ls -l /C/WINDOWS/system32/ddcclaimsapi.dll 
+  - ls -l /C/WINDOWS/system32/DDRAW.dll 
+  - ls -l /C/WINDOWS/system32/deviceaccess.dll 
+  - ls -l /C/WINDOWS/system32/deviceassociation.dll 
+  - ls -l /C/WINDOWS/system32/DEVMGR.DLL 
+  - ls -l /C/WINDOWS/system32/DEVOBJ.dll 
+  - ls -l /C/WINDOWS/system32/DEVRTL.dll 
+  - ls -l /C/WINDOWS/system32/dfscli.dll 
+  - ls -l /C/WINDOWS/system32/dhcpcsvc.DLL 
+  - ls -l /C/WINDOWS/system32/dhcpcsvc6.DLL 
+  - ls -l /C/WINDOWS/system32/direct2ddesktop.dll 
+  - ls -l /C/WINDOWS/system32/dmapisetextimpldesktop.dll 
+  - ls -l /C/WINDOWS/system32/DMCmnUtils.dll 
+  - ls -l /C/WINDOWS/system32/dmEnrollEngine.DLL 
+  - ls -l /C/WINDOWS/system32/dmenterprisediagnostics.dll 
+  - ls -l /C/WINDOWS/system32/DMPushProxy.dll 
+  - ls -l /C/WINDOWS/system32/DNSAPI.dll 
+  - ls -l /C/WINDOWS/system32/DPAPI.dll 
+  - ls -l /C/WINDOWS/system32/drvsetup.dll 
+  - ls -l /C/WINDOWS/system32/drvstore.dll 
+  - ls -l /C/WINDOWS/system32/dsclient.dll 
+  - ls -l /C/WINDOWS/system32/DSPARSE.dll 
+  - ls -l /C/WINDOWS/system32/dsreg.dll 
+  - ls -l /C/WINDOWS/system32/DSROLE.dll 
+  - ls -l /C/WINDOWS/system32/dui70.dll 
+  - ls -l /C/WINDOWS/system32/DUI70.dll 
+  - ls -l /C/WINDOWS/system32/DUser.dll 
+  - ls -l /C/WINDOWS/system32/dwmapi.dll 
+  - ls -l /C/WINDOWS/system32/DWrite.dll 
+  - ls -l /C/WINDOWS/system32/dxcore.dll 
+  - ls -l /C/WINDOWS/system32/dxgi.dll 
+  - ls -l /C/WINDOWS/system32/dxilconv.dll 
+  - ls -l /C/WINDOWS/system32/eappcfg.dll 
+  - ls -l /C/WINDOWS/system32/eappprxy.dll 
+  - ls -l /C/WINDOWS/system32/edgeIso.dll 
+  - ls -l /C/WINDOWS/system32/edpauditapi.dll 
+  - ls -l /C/WINDOWS/system32/EDPCSP.dll 
+  - ls -l /C/WINDOWS/system32/edputil.dll 
+  - ls -l /C/WINDOWS/system32/efsadu.dll 
+  - ls -l /C/WINDOWS/system32/EFSADU.dll 
+  - ls -l /C/WINDOWS/system32/EFSCORE.dll 
+  - ls -l /C/WINDOWS/system32/efsext.dll 
+  - ls -l /C/WINDOWS/system32/EFSUTIL.dll 
+  - ls -l /C/WINDOWS/system32/efswrt.dll 
+  - ls -l /C/WINDOWS/system32/elscore.dll 
+  - ls -l /C/WINDOWS/system32/embeddedmodesvcapi.dll 
+  - ls -l /C/WINDOWS/system32/enterpriseresourcemanager.dll 
+  - ls -l /C/WINDOWS/system32/ESENT.dll 
+  - ls -l /C/WINDOWS/system32/etwrundown.dll 
+  - ls -l /C/WINDOWS/system32/EVR.dll 
+  - ls -l /C/WINDOWS/system32/familysafetyext.dll 
+  - ls -l /C/WINDOWS/system32/feclient.dll 
+  - ls -l /C/WINDOWS/system32/FeClient.dll 
+  - ls -l /C/WINDOWS/system32/firewallapi.dll 
+  - ls -l /C/WINDOWS/system32/FirewallAPI.dll 
+  - ls -l /C/WINDOWS/system32/FLTLIB.DLL 
+  - ls -l /C/WINDOWS/system32/fms.dll 
+  - ls -l /C/WINDOWS/system32/fontgroupsoverride.dll 
+  - ls -l /C/WINDOWS/system32/fveapi.dll 
+  - ls -l /C/WINDOWS/system32/FVEAPI.dll 
+  - ls -l /C/WINDOWS/system32/FVECERTS.dll 
+  - ls -l /C/WINDOWS/system32/FVESKYBACKUP.dll 
+  - ls -l /C/WINDOWS/system32/fwbase.dll 
+  - ls -l /C/WINDOWS/system32/FWPolicyIOMgr.dll 
+  - ls -l /C/WINDOWS/system32/fwpuclnt.dll 
+  - ls -l /C/WINDOWS/system32/gdi32.dll 
+  - ls -l /C/WINDOWS/system32/gdi32full.dll 
+  - ls -l /C/WINDOWS/system32/gdiplus.dll 
+  - ls -l /C/WINDOWS/system32/globinputhost.dll 
+  - ls -l /C/WINDOWS/system32/gpapi.dll 
+  - ls -l /C/WINDOWS/system32/GPAPI.dll 
+  - ls -l /C/WINDOWS/system32/gpsvc.dll 
+  - ls -l /C/WINDOWS/system32/HID.DLL 
+  - ls -l /C/WINDOWS/system32/HTTPAPI.dll 
+  - ls -l /C/WINDOWS/system32/icu.dll 
+  - ls -l /C/WINDOWS/system32/icuin.dll 
+  - ls -l /C/WINDOWS/system32/icuuc.dll 
+  - ls -l /C/WINDOWS/system32/iertutil.dll 
+  - ls -l /C/WINDOWS/system32/IMAGEHLP.dll 
+  - ls -l /C/WINDOWS/system32/IMM32.dll 
+  - ls -l /C/WINDOWS/system32/input.dll 
+  - ls -l /C/WINDOWS/system32/inputhost.dll 
+  - ls -l /C/WINDOWS/system32/IPHLPAPI.DLL 
+  - ls -l /C/WINDOWS/system32/iri.dll 
+  - ls -l /C/WINDOWS/system32/JoinUtil.dll 
+  - ls -l /C/WINDOWS/system32/kernel.appcore.dll 
+  - ls -l /C/WINDOWS/system32/kernel32.dll 
+  - ls -l /C/WINDOWS/system32/kernelbase.dll 
+  - ls -l /C/WINDOWS/system32/ksuser.dll 
+  - ls -l /C/WINDOWS/system32/ktmw32.dll 
+  - ls -l /C/WINDOWS/system32/languageoverlayutil.dll 
+  - ls -l /C/WINDOWS/system32/licensemanagerapi.dll 
+  - ls -l /C/WINDOWS/system32/LINKINFO.dll 
+  - ls -l /C/WINDOWS/system32/logoncli.dll 
+  - ls -l /C/WINDOWS/system32/manageci.dll 
+  - ls -l /C/WINDOWS/system32/MdmCommon.DLL 
+  - ls -l /C/WINDOWS/system32/MDMRegistration.DLL 
+  - ls -l /C/WINDOWS/system32/mf.dll 
+  - ls -l /C/WINDOWS/system32/mfasfsrcsnk.dll 
+  - ls -l /C/WINDOWS/system32/MFC42u.dll 
+  - ls -l /C/WINDOWS/system32/MFCORE.dll 
+  - ls -l /C/WINDOWS/system32/mfnetcore.dll 
+  - ls -l /C/WINDOWS/system32/mfnetsrc.dll 
+  - ls -l /C/WINDOWS/system32/MFPlat.DLL 
+  - ls -l /C/WINDOWS/system32/MFTranscode.dll 
+  - ls -l /C/WINDOWS/system32/mintdh.dll 
+  - ls -l /C/WINDOWS/system32/MMDevAPI.DLL 
+  - ls -l /C/WINDOWS/system32/MobileNetworking.dll 
+  - ls -l /C/WINDOWS/system32/MPR.dll 
+  - ls -l /C/WINDOWS/system32/MPRAPI.dll 
+  - ls -l /C/WINDOWS/system32/mprext.dll 
+  - ls -l /C/WINDOWS/system32/MPRMSG.dll 
+  - ls -l /C/WINDOWS/system32/mrmcorer.dll 
+  - ls -l /C/WINDOWS/system32/MrmCoreR.dll 
+  - ls -l /C/WINDOWS/system32/mrmdeploy.dll 
+  - ls -l /C/WINDOWS/system32/msacm32.dll 
+  - ls -l /C/WINDOWS/system32/MSASN1.dll 
+  - ls -l /C/WINDOWS/system32/mscms.dll 
+  - ls -l /C/WINDOWS/system32/MSCTF.dll 
+  - ls -l /C/WINDOWS/system32/msi.dll 
+  - ls -l /C/WINDOWS/system32/msiltcfg.dll 
+  - ls -l /C/WINDOWS/system32/MSIMG32.dll 
+  - ls -l /C/WINDOWS/system32/msvcp_win.dll 
+  - ls -l /C/WINDOWS/system32/msvcp110_win.dll 
+  - ls -l /C/WINDOWS/system32/MSVCP140.dll 
+  - ls -l /C/WINDOWS/system32/MSVCRT.dll 
+  - ls -l /C/WINDOWS/system32/ncrypt.dll 
+  - ls -l /C/WINDOWS/system32/NDFAPI.DLL 
+  - ls -l /C/WINDOWS/system32/NETAPI32.dll 
+  - ls -l /C/WINDOWS/system32/netbios.dll 
+  - ls -l /C/WINDOWS/system32/netjoin.dll 
+  - ls -l /C/WINDOWS/system32/NETPLWIZ.dll 
+  - ls -l /C/WINDOWS/system32/netprovfw.dll 
+  - ls -l /C/WINDOWS/system32/netutils.dll 
+  - ls -l /C/WINDOWS/system32/newdev.dll 
+  - ls -l /C/WINDOWS/system32/ngclocal.dll 
+  - ls -l /C/WINDOWS/system32/ngcrecovery.dll 
+  - ls -l /C/WINDOWS/system32/nlaapi.dll 
+  - ls -l /C/WINDOWS/system32/NSI.dll 
+  - ls -l /C/WINDOWS/system32/NTASN1.dll 
+  - ls -l /C/WINDOWS/system32/ntdll.dll 
+  - ls -l /C/WINDOWS/system32/ntdsapi.dll 
+  - ls -l /C/WINDOWS/system32/NTDSAPI.dll 
+  - ls -l /C/WINDOWS/system32/ntmarta.dll 
+  - ls -l /C/WINDOWS/system32/NTMARTA.dll 
+  - ls -l /C/WINDOWS/system32/ntshrui.dll 
+  - ls -l /C/WINDOWS/system32/odbc32.dll 
+  - ls -l /C/WINDOWS/system32/ole32.dll 
+  - ls -l /C/WINDOWS/system32/oleacc.dll 
+  - ls -l /C/WINDOWS/system32/OLEACC.dll 
+  - ls -l /C/WINDOWS/system32/OLEAUT32.dll 
+  - ls -l /C/WINDOWS/system32/OLEDLG.dll 
+  - ls -l /C/WINDOWS/system32/omadmapi.dll 
+  - ls -l /C/WINDOWS/system32/ondemandconnroutehelper.dll 
+  - ls -l /C/WINDOWS/system32/OneX.DLL 
+  - ls -l /C/WINDOWS/system32/onexui.dll 
+  - ls -l /C/WINDOWS/system32/pcacli.dll 
+  - ls -l /C/WINDOWS/system32/pkeyhelper.dll 
+  - ls -l /C/WINDOWS/system32/policymanager.dll 
+  - ls -l /C/WINDOWS/system32/policymanagerprecheck.dll 
+  - ls -l /C/WINDOWS/system32/powrprof.dll 
+  - ls -l /C/WINDOWS/system32/PRINTUI.dll 
+  - ls -l /C/WINDOWS/system32/profapi.dll 
+  - ls -l /C/WINDOWS/system32/profext.dll 
+  - ls -l /C/WINDOWS/system32/PROPSYS.dll 
+  - ls -l /C/WINDOWS/system32/puiapi.dll 
+  - ls -l /C/WINDOWS/system32/QUARTZ.dll 
+  - ls -l /C/WINDOWS/system32/rasapi32.dll 
+  - ls -l /C/WINDOWS/system32/RASAPI32.dll 
+  - ls -l /C/WINDOWS/system32/RASDLG.dll 
+  - ls -l /C/WINDOWS/system32/rasman.dll 
+  - ls -l /C/WINDOWS/system32/REGAPI.dll 
+  - ls -l /C/WINDOWS/system32/reinfo.dll 
+  - ls -l /C/WINDOWS/system32/rmclient.dll 
+  - ls -l /C/WINDOWS/system32/RMCLIENT.dll 
+  - ls -l /C/WINDOWS/system32/rometadata.dll 
+  - ls -l /C/WINDOWS/system32/rpcrt4.dll 
+  - ls -l /C/WINDOWS/system32/rpcrtremote.dll 
+  - ls -l /C/WINDOWS/system32/rstrtmgr.dll 
+  - ls -l /C/WINDOWS/system32/rtutils.dll 
+  - ls -l /C/WINDOWS/system32/RTWorkQ.DLL 
+  - ls -l /C/WINDOWS/system32/samcli.dll 
+  - ls -l /C/WINDOWS/system32/SAMLIB.dll 
+  - ls -l /C/WINDOWS/system32/SCECLI.dll 
+  - ls -l /C/WINDOWS/system32/sechost.dll 
+  - ls -l /C/WINDOWS/system32/secur32.dll 
+  - ls -l /C/WINDOWS/system32/Secur32.dll 
+  - ls -l /C/WINDOWS/system32/Setupapi.dll 
+  - ls -l /C/WINDOWS/system32/SHCORE.dll 
+  - ls -l /C/WINDOWS/system32/shdocvw.dll 
+  - ls -l /C/WINDOWS/system32/SHDOCVW.dll 
+  - ls -l /C/WINDOWS/system32/SHELL32.dll 
+  - ls -l /C/WINDOWS/system32/SHLWAPI.dll 
+  - ls -l /C/WINDOWS/system32/slc.dll 
+  - ls -l /C/WINDOWS/system32/SPFILEQ.dll 
+  - ls -l /C/WINDOWS/system32/SPINF.dll 
+  - ls -l /C/WINDOWS/system32/sppc.dll 
+  - ls -l /C/WINDOWS/system32/srpapi.dll 
+  - ls -l /C/WINDOWS/system32/srvcli.dll 
+  - ls -l /C/WINDOWS/system32/SspiCli.dll 
+  - ls -l /C/WINDOWS/system32/StateRepository.Core.dll 
+  - ls -l /C/WINDOWS/system32/storageusage.dll 
+  - ls -l /C/WINDOWS/system32/sxs.dll 
+  - ls -l /C/WINDOWS/system32/SYSNTFY.dll 
+  - ls -l /C/WINDOWS/system32/SystemEventsBrokerClient.dll 
+  - ls -l /C/WINDOWS/system32/TAPI32.dll 
+  - ls -l /C/WINDOWS/system32/tbs.dll 
+  - ls -l /C/WINDOWS/system32/tdh.dll 
+  - ls -l /C/WINDOWS/system32/TextInputFramework.dll 
+  - ls -l /C/WINDOWS/system32/TOKENBINDING.dll 
+  - ls -l /C/WINDOWS/system32/TpmCoreProvisioning.DLL 
+  - ls -l /C/WINDOWS/system32/twinapi.appcore.dll 
+  - ls -l /C/WINDOWS/system32/TWINAPI.dll 
+  - ls -l /C/WINDOWS/system32/ucrtbase.dll 
+  - ls -l /C/WINDOWS/system32/UIAutomationCore.DLL 
+  - ls -l /C/WINDOWS/system32/UMPDC.dll 
+  - ls -l /C/WINDOWS/system32/unenrollhook.dll 
+  - ls -l /C/WINDOWS/system32/urlmon.dll 
+  - ls -l /C/WINDOWS/system32/user32.dll 
+  - ls -l /C/WINDOWS/system32/UserDataTypeHelperUtil.dll 
+  - ls -l /C/WINDOWS/system32/userenv.dll 
+  - ls -l /C/WINDOWS/system32/USERENV.dll 
+  - ls -l /C/WINDOWS/system32/usermgrcli.dll 
+  - ls -l /C/WINDOWS/system32/uxtheme.dll 
+  - ls -l /C/WINDOWS/system32/UxTheme.dll 
+  - ls -l /C/WINDOWS/system32/vaultcli.dll 
+  - ls -l /C/WINDOWS/system32/VAULTCLI.dll 
+  - ls -l /C/WINDOWS/system32/VCRUNTIME140.dll 
+  - ls -l /C/WINDOWS/system32/VCRUNTIME140_1.dll 
+  - ls -l /C/WINDOWS/system32/VERSION.dll 
+  - ls -l /C/WINDOWS/system32/VirtDisk.dll 
+  - ls -l /C/WINDOWS/system32/W32TOPL.dll 
+  - ls -l /C/WINDOWS/system32/wc_storage.dll 
+  - ls -l /C/WINDOWS/system32/wcmapi.dll 
+  - ls -l /C/WINDOWS/system32/wdi.dll 
+  - ls -l /C/WINDOWS/system32/WDSCORE.dll 
+  - ls -l /C/WINDOWS/system32/webauthn.dll 
+  - ls -l /C/WINDOWS/system32/webio.dll 
+  - ls -l /C/WINDOWS/system32/webservices.dll 
+  - ls -l /C/WINDOWS/system32/websocket.dll 
+  - ls -l /C/WINDOWS/system32/wer.dll 
+  - ls -l /C/WINDOWS/system32/werui.dll 
+  - ls -l /C/WINDOWS/system32/wevtapi.dll 
+  - ls -l /C/WINDOWS/system32/WFDSConMgr.dll 
+  - ls -l /C/WINDOWS/system32/win32u.dll 
+  - ls -l /C/WINDOWS/system32/winbio.dll 
+  - ls -l /C/WINDOWS/system32/winbioext.dll 
+  - ls -l /C/WINDOWS/system32/WINBRAND.dll 
+  - ls -l /C/WINDOWS/system32/wincredui.dll 
+  - ls -l /C/WINDOWS/system32/windows.globalization.fontgroups.dll 
+  - ls -l /C/WINDOWS/system32/windows.staterepositoryclient.dll 
+  - ls -l /C/WINDOWS/system32/windows.staterepositorycore.dll 
+  - ls -l /C/WINDOWS/system32/windows.storage.dll 
+  - ls -l /C/WINDOWS/system32/Windows.UI.Immersive.dll 
+  - ls -l /C/WINDOWS/system32/WindowsCodecs.dll 
+  - ls -l /C/WINDOWS/system32/WindowsPerformanceRecorderControl.dll 
+  - ls -l /C/WINDOWS/system32/WINHTTP.dll 
+  - ls -l /C/WINDOWS/system32/WININET.dll 
+  - ls -l /C/WINDOWS/system32/winipcfile.dll 
+  - ls -l /C/WINDOWS/system32/WinLangdb.dll 
+  - ls -l /C/WINDOWS/system32/winmm.dll 
+  - ls -l /C/WINDOWS/system32/WINMM.dll 
+  - ls -l /C/WINDOWS/system32/winmmbase.dll 
+  - ls -l /C/WINDOWS/system32/WINMMBASE.dll 
+  - ls -l /C/WINDOWS/system32/winmsipc.dll 
+  - ls -l /C/WINDOWS/system32/WINNSI.DLL 
+  - ls -l /C/WINDOWS/system32/winscard.dll 
+  - ls -l /C/WINDOWS/system32/WinSCard.dll 
+  - ls -l /C/WINDOWS/system32/winspool.drv 
+  - ls -l /C/WINDOWS/system32/WINSPOOL.DRV 
+  - ls -l /C/WINDOWS/system32/winsta.dll 
+  - ls -l /C/WINDOWS/system32/WINSTA.dll 
+  - ls -l /C/WINDOWS/system32/WINTRUST.dll 
+  - ls -l /C/WINDOWS/system32/wintypes.dll 
+  - ls -l /C/WINDOWS/system32/wkscli.dll 
+  - ls -l /C/WINDOWS/system32/wlanapi.dll 
+  - ls -l /C/WINDOWS/system32/WLDAP32.dll 
+  - ls -l /C/WINDOWS/system32/Wldp.dll 
+  - ls -l /C/WINDOWS/system32/WMICLNT.dll 
+  - ls -l /C/WINDOWS/system32/wpaxholder.dll 
+  - ls -l /C/WINDOWS/system32/WS2_32.dll 
+  - ls -l /C/WINDOWS/system32/wtsapi32.dll 
+  - ls -l /C/WINDOWS/system32/WTSAPI32.dll 
+  - ls -l /C/WINDOWS/system32/wuceffects.dll 
+  - ls -l /C/WINDOWS/system32/wwapi.dll 
+  - ls -l /C/WINDOWS/system32/XmlLite.dll 
+  - tsduck/tsversion.exe --version=all
