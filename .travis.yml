@@ -50,12 +50,16 @@ matrix:
 
     - name: "Windows 32"
       os: windows
+      install:
+        - powershell -c 'Install-WindowsFeature Server-Media-Foundation'
       env:
         - ARCH=Win32
         - EXE=.exe
 
     - name: "Windows 64"
       os: windows
+      install:
+        - powershell -c 'Install-WindowsFeature Server-Media-Foundation'
       env:
         - ARCH=x64
         - EXE=.exe
