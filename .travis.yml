@@ -1,0 +1,50 @@
+language: cpp
+
+git:
+  depth: 1
+  quiet: true
+
+branches:
+  only:
+    - master
+
+addons:
+  apt:
+    packages:
+      - dos2unix
+  homebrew:
+    packages:
+      - gnu-sed
+      - grep
+      - dos2unix
+
+matrix:
+  include:
+    - name: "Linux with GCC"
+      os: linux
+      dist: bionic
+      arch: amd64
+      compiler: gcc
+    - name: "Linux with clang"
+      os: linux
+      dist: bionic
+      arch: amd64
+      compiler: clang
+    - name: "macOS"
+      os: osx
+      osx_image: xcode11.3
+      compiler: clang
+    - name: "Windows"
+      os: windows
+
+script:
+  - pwd
+  - echo "TRAVIS_OS_NAME=$TRAVIS_OS_NAME"
+  - echo "CC=$CC"
+  - echo "GCC=$GCC"
+  - echo "CXX=$CXX"
+  - git log --max-count=2 --format=fuller
+  - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then
+        powershell ./Build.ps1
+    fi
+
