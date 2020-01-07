@@ -78,5 +78,10 @@ script:
         make
     fi
   - ls -lA Release-$ARCH
-  - Release-$ARCH/app$EXE
+  - |-
+    if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then
+        Release-$ARCH/app.exe
+    else
+        Release-$ARCH/app
+    fi
   - Release-$ARCH/app_dll$EXE
