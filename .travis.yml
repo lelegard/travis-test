@@ -19,6 +19,8 @@ addons:
       - grep
       - dos2unix
 
+env:
+  - TESTOPT=dev
 matrix:
   include:
     - name: "Linux with GCC"
@@ -38,6 +40,7 @@ matrix:
     - name: "Windows 32"
       os: windows
       env:
+        - TESTOPT=dev32
         - ARCH=Win32
     - name: "Windows 64"
       os: windows
@@ -55,6 +58,7 @@ script:
   - echo "CXX=$CXX"
   - echo "ARCH=$ARCH"
   - echo "PATH=$PATH"
+  - echo "TESTOPT=$TESTOPT"
   - git log --max-count=2 --format=fuller
   - |-
     if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then
