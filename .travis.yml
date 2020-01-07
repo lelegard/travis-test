@@ -85,3 +85,7 @@ script:
         Release-$ARCH/app_dll
     fi
   - Release-$ARCH/app$EXE
+  - |-
+    if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then
+        tsduck/tsversion.exe --version=all
+    fi
