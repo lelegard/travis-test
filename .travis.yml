@@ -72,5 +72,14 @@ script:
   - git log --max-count=2 --format=fuller
   - |-
     if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then
-        powershell -NoLogo -ExecutionPolicy RemoteSigned ./Build.ps1 -$ARCH -Release
+        powershell -NoLogo -ExecutionPolicy RemoteSigned ./Build.ps1
+        ls -lA Release-x64
+    fi
+  - |-
+    if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then
+        Release-x64\app.exe
+    fi
+  - |-
+    if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then
+        Release-x64\app_dll.exe
     fi
