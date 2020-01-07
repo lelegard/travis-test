@@ -19,32 +19,42 @@ addons:
       - grep
       - dos2unix
 
-env:
-  - TESTOPT=dev
 matrix:
   include:
+
     - name: "Linux with GCC"
       os: linux
       dist: bionic
       arch: amd64
       compiler: gcc
+      env:
+        - TESTOPT=dev
+
     - name: "Linux with clang"
       os: linux
       dist: bionic
       arch: amd64
       compiler: clang
+      env:
+        - TESTOPT=dev
+
     - name: "macOS"
       os: osx
       osx_image: xcode11.3
       compiler: clang
+      env:
+        - TESTOPT=dev
+
     - name: "Windows 32"
       os: windows
       env:
         - TESTOPT=dev32
         - ARCH=Win32
+
     - name: "Windows 64"
       os: windows
       env:
+        - TESTOPT=dev
         - ARCH=Win64
 
 script:
