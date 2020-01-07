@@ -45,6 +45,6 @@ script:
   - echo "CXX=$CXX"
   - git log --max-count=2 --format=fuller
   - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then
-        powershell ./Build.ps1
+        powershell ./Build.ps1;
     fi
 
