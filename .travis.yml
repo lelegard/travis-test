@@ -89,3 +89,7 @@ script:
     if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then
         tsduck/tsversion.exe --version=all
     fi
+  - |-
+    if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then
+        powershell  "& tsduck/tsversion.exe --version=all"
+    fi
