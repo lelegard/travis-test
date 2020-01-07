@@ -54,5 +54,5 @@ script:
   - git log --max-count=2 --format=fuller
   - |-
     if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then
-        powershell -NoLogo -ExecutionPolicy RemoteSigned ./Build.ps1 /$ARCH /Release
+        powershell -NoLogo -ExecutionPolicy RemoteSigned ./Build.ps1 -$ARCH -Release
     fi
