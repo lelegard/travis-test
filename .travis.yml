@@ -34,8 +34,14 @@ matrix:
       os: osx
       osx_image: xcode11.3
       compiler: clang
-    - name: "Windows"
+    - name: "Windows 32"
       os: windows
+      env:
+        - ARCH=Win32
+    - name: "Windows 64"
+      os: windows
+      env:
+        - ARCH=Win64
 
 script:
   - pwd
@@ -43,8 +49,10 @@ script:
   - echo "CC=$CC"
   - echo "GCC=$GCC"
   - echo "CXX=$CXX"
+  - echo "ARCH=$ARCH"
+  - echo "PATH=$PATH"
   - git log --max-count=2 --format=fuller
-  - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then
-        powershell -NoLogo -ExecutionPolicy RemoteSigned ./Build.ps1;
+  - |-
+    if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then
+        powershell -NoLogo -ExecutionPolicy RemoteSigned ./Build.ps1 /$ARCH /Release
     fi
-
