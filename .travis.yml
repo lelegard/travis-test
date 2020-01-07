@@ -1,3 +1,4 @@
+# Comments
 language: cpp
 
 git:
@@ -44,10 +45,13 @@ matrix:
         - ARCH=Win64
 
 script:
+  # Comments in script
   - pwd
   - echo "TRAVIS_OS_NAME=$TRAVIS_OS_NAME"
   - echo "CC=$CC"
   - echo "GCC=$GCC"
+
+  # Blank line and comments in script
   - echo "CXX=$CXX"
   - echo "ARCH=$ARCH"
   - echo "PATH=$PATH"
