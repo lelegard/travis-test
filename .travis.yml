@@ -1,5 +1,7 @@
 os: windows
 language: shell
+install:
+  - powershell -c 'Install-WindowsFeature Server-Media-Foundation'
 script:
   - powershell -c 'Get-WindowsFeature'
 
