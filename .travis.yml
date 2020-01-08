@@ -7,7 +7,8 @@ git:
 
 install:
   - choco install -y directx; true
-  - cat /C/ProgramData/chocolatey/logs/chocolatey.log
+  - head -100 /C/ProgramData/chocolatey/logs/chocolatey.log
+  - tail -200 /C/ProgramData/chocolatey/logs/chocolatey.log
 
 script:
   - curl -s -L https://github.com/lucasg/Dependencies/releases/latest/download/Dependencies_x64_Release.zip -o Dependencies.zip
