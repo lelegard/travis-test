@@ -1,13 +1,16 @@
 os: windows
 language: shell
 
+git:
+  depth: 1
+  quiet: true
+
 install:
-  - powershell -c 'Install-WindowsFeature Server-Media-Foundation'
+  - choco install directx
 
 script:
   - curl -s -L https://github.com/lucasg/Dependencies/releases/latest/download/Dependencies_x64_Release.zip -o Dependencies.zip
   - mkdir dep
   - (cd dep; unzip -q ../Dependencies.zip)
   - dep/Dependencies.exe tsduck/tsversion.exe -modules
-  - dep/Dependencies.exe tsduck/tsduck.dll -modules
   - tsduck/tsversion.exe --version=all
