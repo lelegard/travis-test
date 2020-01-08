@@ -6,9 +6,7 @@ git:
   quiet: true
 
 install:
-  - choco install directx
-
-after_failure:
+  - choco install -y directx; true
   - cat /C/ProgramData/chocolatey/logs/chocolatey.log
 
 script:
