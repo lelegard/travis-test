@@ -17,8 +17,9 @@ script:
   - mkdir -p /C/Temp/dxsetup
   - curl -s -L https://download.microsoft.com/download/8/4/A/84A35BF1-DAFE-4AE8-82AF-AD2AE20B6B14/directx_Jun2010_redist.exe -o /C/Temp/directx_Jun2010_redist.exe
   - powershell -c 'C:\Temp\directx_Jun2010_redist.exe /Q /T:C:\Temp\dxsetup'
+  - ls -l /C/Temp/dxsetup
   - rm -f /C/Temp/dxsetup/*.cab
-  - powershell -c 'C:\Temp\dxsetup\DXSETUP.exe /silent'
+  - /C/Temp/dxsetup/DXSETUP.exe /silent
   - curl -s -L https://github.com/lucasg/Dependencies/releases/latest/download/Dependencies_x64_Release.zip -o Dependencies.zip
   - mkdir dep
   - (cd dep; unzip -q ../Dependencies.zip)
